@@ -15,7 +15,7 @@ interface User {
   phoneNumber: string
 }
 
-export class UserContainer extends Contaner<User> {
+export class UserContainer extends Container<User> {
   public state = {
     name: '',
     email: '',
