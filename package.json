@@ -5,6 +5,13 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "license": "MIT",
+  "repository": {
+    "url": "https://github.com/nicreichert/use-container"
+  },
+  "author": {
+    "name": "Nic Reichert",
+    "url": "https://github.com/nicreichert"
+  },
   "scripts": {
     "start": "tsc -w --p tsconfig.build.json",
     "build": "rm -rf dist && tsc",

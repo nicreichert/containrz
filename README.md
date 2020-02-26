@@ -45,7 +45,7 @@ export const App = () => {
   React.useEffect(() => {
     fetch('/user')
       .then(response => response.json)
-      .then(data => user.setUser(data));
+      .then(data => user.setUser(data))
   }, [])
 
   return <input value={user.state.name} onChange={e => user.setName(e.target.value)} />
@@ -59,7 +59,7 @@ If your intention is to share the state globally, you can then use simply the re
 ```js
 export const App = () => {
   // uses the global state for UserContainer
-  const user = useContainer(UserContainer);
+  const user = useContainer(UserContainer)
 
   return (
     // ...
@@ -69,7 +69,21 @@ export const App = () => {
 export const App = () => {
   // creates a local state for UserContainer
   const[localUser] = React.useState(new UserContainer())
-  const user = useContainer(localUser);
+  const user = useContainer(localUser)
+
+  return (
+    // ...
+  )
+}
+
+```
+
+If your state should be exclusively local, and you want to make sure it cease to exist after your component unmounts, you can pass a second parameter to the `useContainer` hook, to delete the created container on unmount. 
+
+```js
+export const App = () => {
+  const[localUser] = React.useState(new UserContainer())
+  const user = useContainer(localUser, true) // delete container on unmount
 
   return (
     // ...
