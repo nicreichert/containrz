@@ -55,7 +55,7 @@ export class Container<State = any> {
   };
 }
 
-export function getContainer<C extends Container>(container: C | Class<C>) {
+export function getContainer<C extends Container>(container: C | Class<C>): C {
   return container instanceof Container ? container : (findContainer(container) as C);
 }
 
