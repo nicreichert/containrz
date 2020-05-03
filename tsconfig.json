@@ -4,7 +4,7 @@
     "module": "commonjs",
     "target": "es5",
     "lib": ["es6", "dom", "esnext.asynciterable", "esnext"],
-    "types": ["react", "jest"],
+    "types": ["react"],
     "moduleResolution": "node",
     "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
