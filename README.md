@@ -78,7 +78,7 @@ export const App = () => {
 
 ```
 
-If your state should be exclusively local, and you want to make sure it cease to exist after your component unmounts, you can pass a second parameter to the `useContainer` hook, to delete the created container on unmount. 
+If your state should be exclusively local, and you want to make sure it cease to exist after your component unmounts, you can pass a second parameter to the `useContainer` hook, to delete the created container on unmount.
 
 ```js
 export const App = () => {
@@ -91,3 +91,39 @@ export const App = () => {
 }
 
 ```
+
+## Persist your data
+
+If you'd like to have a persistent state, you can do so by having your container extend `LocalStorageContainer`.
+
+When extending `LocalStorageContainer`, there's a small requirement you need to follow: you need to have a `constructor` method in your container, that calls `super()` with the initial state. If we were to reimplement our previous container, here's how it'd look with `LocalStorageContainer`:
+
+```js
+import { LocalStorageContainer } from 'containrz'
+
+interface User {
+  name: string
+  email: string
+  phoneNumber: string
+}
+
+export class UserContainer extends LocalStorageContainer<User> {
+  constructor() {
+    super({
+      name: '',
+      email: '',
+      phoneNumber: '',
+    })
+  }
+
+  public setUser = (user: User) => this.setState(user)
+
+  public setName = (name) => this.setState({ name })
+
+  public setEmail = (email) => this.setState({ email })
+
+  // ...
+}
+```
+
+The `constructor` is necessary so that the initial state can use the stored data and have the default values as fallbacks.
