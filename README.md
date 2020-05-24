@@ -35,21 +35,21 @@ export class UserContainer extends Container<User> {
 Once you have your container, you can now start sharing its state:
 
 ```js
-import * as React from 'react'
-import { useContainer } from 'containrz'
-import { UserContainer } from './UserContainer'
+import * as React from 'react';
+import { useContainer } from 'containrz';
+import { UserContainer } from './UserContainer';
 
 export const App = () => {
-  const user = useContainer(UserContainer)
+  const user = useContainer(UserContainer);
 
   React.useEffect(() => {
     fetch('/user')
       .then(response => response.json)
-      .then(data => user.setUser(data))
-  }, [])
+      .then(data => user.setUser(data));
+  }, []);
 
-  return <input value={user.state.name} onChange={e => user.setName(e.target.value)} />
-}
+  return <input value={user.state.name} onChange={e => user.setName(e.target.value)} />;
+};
 ```
 
 ## Share globally and locally
@@ -111,7 +111,7 @@ export class UserContainer extends Container<User> {
   }
 
   destroy = () => {
-    clearTimeout(this.interval);
+    clearInterval(this.interval);
   };
 
   // ...
