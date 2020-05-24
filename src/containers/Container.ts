@@ -2,6 +2,7 @@ import { getEmitter } from '../emmiter';
 
 export class Container<State = any> {
   public state!: State;
+
   public setState = (updater: Partial<State> | ((prevState: State) => Partial<State> | null)) => {
     const nextState = updater instanceof Function ? updater(this.state) : updater;
     if (nextState) {
@@ -11,4 +12,6 @@ export class Container<State = any> {
       getEmitter(this).next(0);
     }
   };
+
+  public destroy = () => {};
 }

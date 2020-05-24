@@ -5,7 +5,12 @@ import { getEmitter, emittersMap, containersMap, findContainer } from './emmiter
 
 export * from './containers';
 
-export const clearListeners = () => {
+export const clearContainers = () => {
+  Array.from(containersMap.keys()).map(key => {
+    const container = getContainer(key);
+    container.destroy();
+  });
+
   containersMap.clear();
   emittersMap.clear();
 };
