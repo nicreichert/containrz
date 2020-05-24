@@ -1,5 +1,5 @@
 import { act, renderHook } from 'react-hooks-testing-library';
-import { Container, useContainer, LocalStorageContainer, clearListeners } from '.';
+import { Container, useContainer, LocalStorageContainer, clearContainers } from '.';
 
 /**
  *  Tests for simple container
@@ -57,7 +57,7 @@ class ObjectContainerLocalStorage extends LocalStorageContainer<ObjectContainerS
 
 describe('`useContainer` tests', () => {
   beforeEach(() => {
-    clearListeners();
+    clearContainers();
   });
 
   afterAll(() => {
@@ -125,5 +125,16 @@ describe('`useContainer` tests', () => {
     expect(localStorage.getItem('ObjectContainerLocalStorage-items')).toBe(
       JSON.stringify(['Ball'])
     );
+  });
+
+  it('Should call destroy.', () => {
+    const { result } = renderHook(() => useContainer(ObjectContainerLocalStorage));
+    const container = result.current;
+
+    container.destroy = jest.fn();
+
+    clearContainers();
+
+    expect(container.destroy).toHaveBeenCalled();
   });
 });

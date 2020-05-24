@@ -92,6 +92,32 @@ export const App = () => {
 
 ```
 
+## Clear everything!
+
+If at any point you need to clear all your data (commonly due to a user sign out, for instance), you can simply call `clearContainers` method.
+This will remove all the containers stored and managed by `containrz`.
+
+### .destroy()
+
+While clearing the containers, a `destroy` method will be called. This is so that you can cleanup any backgroud task you may have running.
+
+```js
+export class UserContainer extends Container<User> {
+  // ...
+  constructor() {
+    this.interval = setInterval(() => {
+      // do things.
+    }, 5000);
+  }
+
+  destroy = () => {
+    clearTimeout(this.interval);
+  };
+
+  // ...
+}
+```
+
 ## Persist your data
 
 If you'd like to have a persistent state, you can do so by having your container extend `LocalStorageContainer`.

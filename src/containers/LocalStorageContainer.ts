@@ -42,4 +42,6 @@ export class LocalStorageContainer<State = any> {
       getEmitter(this).next(0);
     }
   };
+
+  public destroy = () => {};
 }
