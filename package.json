@@ -1,6 +1,6 @@
 {
   "name": "containrz",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
@@ -19,12 +19,11 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "react": "^16.12.0",
     "rxjs": "^6.5.2",
     "utility-types": "^3.7.0"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": ">=16.0.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",

@@ -15,7 +15,7 @@ export const clearContainers = () => {
   emittersMap.clear();
 };
 
-const subscribeListener = (
+export const subscribeListener = (
   container: ContainerType<any>,
   listener: () => void,
   deleteOnUnmount?: boolean
